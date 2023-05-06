@@ -1,0 +1,55 @@
+@import "../abstracts/colors";
+@font-face {
+  font-family: "Urbanist";
+  src: url("../../assets/fonts/Raleway-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Urbanist", sans-serif !important;
+}
+button {
+  cursor: pointer;
+  font-family: "Urbanist", sans-serif !important;
+}
+
+.light {
+  .text {
+    color: $dark-900;
+  }
+  .background {
+    background-color: $white;
+  }
+}
+
+.dark {
+  .text {
+    color: $white;
+  }
+  .background {
+    background-color: $dark-700;
+  }
+}
+.flex {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.full-width {
+  width: 100%;
+}
