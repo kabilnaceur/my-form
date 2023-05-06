@@ -7,7 +7,7 @@ export interface ApplicationState {
 
 const initialState: ApplicationState = {
   firstTime: true,
-  theme: "light",
+  theme: "dark",
 };
 
 const applicationSlice = createSlice({

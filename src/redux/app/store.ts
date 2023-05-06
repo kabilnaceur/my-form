@@ -6,8 +6,8 @@ import applicationReducer, {
   ApplicationState,
 } from "../features/application/applicationSlice";
 
-interface RootState {
-  user: ApplicationState;
+export interface RootState {
+  application: ApplicationState;
 }
 
 const persistConfig = {
@@ -22,7 +22,7 @@ const persistedUserReducer = persistReducer<ApplicationState>(
 
 const store: Store<RootState> = configureStore({
   reducer: {
-    user: persistedUserReducer,
+    application: persistedUserReducer,
   },
 });
 
