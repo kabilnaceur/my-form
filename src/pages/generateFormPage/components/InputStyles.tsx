@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/app/store";
 import styles from "../generateFormPage.module.scss";
@@ -104,6 +104,14 @@ const InputStyles: FC<inputStylesProps> = ({
     setActiveTab(tabName);
   };
 
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    const newElement = {
+      ...elementEdit,
+      name: event.target.value,
+    };
+    if (newElement.id === elementEdit.id) setElementEdit(newElement);
+  };
+
   return (
     <div className={styles[theme]}>
       <div className={styles.inputStylesCard}>
@@ -128,11 +136,11 @@ const InputStyles: FC<inputStylesProps> = ({
             <div className={styles.inputDetails}>
               {" "}
               <label>Element name</label>
-              <input placeholder="Element name" />
-            </div>
-            <div className={styles.inputDetails}>
-              <label>Element id</label>
-              <input placeholder="Element id" />
+              <input
+                placeholder="Element name"
+                onChange={handleChangeName}
+                value={elementEdit.name}
+              />
             </div>
             <div>
               <label className="container">

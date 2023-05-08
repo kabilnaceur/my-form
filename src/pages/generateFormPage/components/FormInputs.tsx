@@ -49,7 +49,7 @@ const FormInputs: FC<formInputsProps> = ({
 
   const handleElementClicked = (input: Input): void => {
     setElementEdit({
-      id: input.type,
+      id: input.type + "-" + formElements.length,
       name: input.type,
       type: input.type,
       isRequired: false,
@@ -64,7 +64,7 @@ const FormInputs: FC<formInputsProps> = ({
     setFormElements([
       ...formElements,
       {
-        id: input.type,
+        id: input.type + "-" + formElements.length,
         name: input.type,
         type: input.type,
         isRequired: false,

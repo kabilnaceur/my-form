@@ -1,10 +1,11 @@
-import { Dispatch, FC } from "react";
+import { Dispatch, FC, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/app/store";
 import { Element } from "../../../utils/types";
 import styles from "../generateFormPage.module.scss";
 import { SetStateAction } from "react";
 import DragInput from "./DragInput";
+import update from "immutability-helper";
 
 export interface formDesplayProps {
   formName: string;
@@ -13,7 +14,14 @@ export interface formDesplayProps {
   setFormElements: Dispatch<SetStateAction<Element[]>>;
   setElementEdit: Dispatch<SetStateAction<Element>>;
 }
+export interface Item {
+  id: number;
+  text: string;
+}
 
+export interface ContainerState {
+  elements: Element[];
+}
 const FormDesplay: FC<formDesplayProps> = ({
   formName,
   formDescription,
@@ -23,21 +31,36 @@ const FormDesplay: FC<formDesplayProps> = ({
 }) => {
   const theme = useSelector((state: RootState) => state.application.theme);
 
+  const moveCard = useCallback((dragIndex: number, hoverIndex: number) => {
+    setFormElements((prevCards: Element[]) =>
+      update(prevCards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, prevCards[dragIndex] as Element],
+        ],
+      })
+    );
+  }, []);
+  const renderCard = useCallback((element: Element, index: number) => {
+    return (
+      <DragInput
+        element={element}
+        setFormElements={setFormElements}
+        index={index}
+        moveCard={moveCard}
+        id={element.id}
+        formElements={formElements}
+        setElementEdit={setElementEdit}
+      />
+    );
+  }, []);
   return (
     <div className={styles[theme]}>
       <div className={styles.formDesplayCard}>
         <h4 style={{ textAlign: "start" }}>Form desplay</h4>
         <h3>{formName}</h3>
         <p>{formDescription}</p>
-        {formElements.map((element, index) => (
-          <DragInput
-            element={element}
-            setFormElements={setFormElements}
-            index={index}
-            formElements={formElements}
-            setElementEdit={setElementEdit}
-          />
-        ))}
+        <div>{formElements.map((card, i) => renderCard(card, i))}</div>
       </div>
     </div>
   );
