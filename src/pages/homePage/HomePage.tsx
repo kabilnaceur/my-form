@@ -4,12 +4,14 @@ import { RootState } from "../../redux/app/store";
 import styles from "./homePage.module.scss";
 import FormCard from "./components/FormCard";
 import { Form } from "../../utils/types";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { addForm } from "../../redux/features/form/formSlice";
 import FloatingButton from "./components/FloatingButton";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector((state: RootState) => state.application.theme);
   const forms = useSelector((state: RootState) => state.forms.forms);
 
@@ -31,6 +33,10 @@ function HomePage() {
       console.error("Invalid file type, please select a JSON file");
     }
   };
+
+  useEffect(() => {
+    if (forms.length === 0) navigate("/get-started");
+  }, []);
   return (
     <div className={theme}>
       <div className="background ">

@@ -8,11 +8,12 @@ import InputStyles from "./components/InputStyles";
 import FormDesplay from "./components/FormDesplay";
 import { useEffect, useState } from "react";
 import { Element, Form } from "../../utils/types";
-import { saveAs } from "file-saver";
 import { addForm } from "../../redux/features/form/formSlice";
+import { useNavigate } from "react-router-dom";
 
 function GenerateFormPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useSelector((state: RootState) => state.application.theme);
   const forms = useSelector((state: RootState) => state.forms.forms);
   const [formName, setFormName] = useState<string>("Form Name");
@@ -43,9 +44,7 @@ function GenerateFormPage() {
       elements: formElements,
     };
     setForms(Formdata);
-    const json = JSON.stringify(Formdata);
-    const blob = new Blob([json], { type: "application/json" });
-    saveAs(blob, `${formName}.json`);
+    navigate("/home");
   };
   useEffect(() => {
     console.log(elementEdit);
@@ -57,7 +56,20 @@ function GenerateFormPage() {
       newElements[index] = elementEdit; // Replace it with elementEdit
     }
     setFormElements(newElements);
+    console.log(formElements);
   }, [elementEdit]);
+
+  const handleDelete = (element: Element): void => {
+    console.log(element, formElements);
+    const newElements = [...formElements];
+    const index = newElements.findIndex(
+      (ele: Element) => ele.id === element.id
+    );
+    if (index !== -1) {
+      newElements.splice(index, 1);
+      setFormElements(newElements);
+    }
+  };
 
   return (
     <div className={theme}>
@@ -88,6 +100,7 @@ function GenerateFormPage() {
                 formElements={formElements}
                 setFormElements={setFormElements}
                 setElementEdit={setElementEdit}
+                handleDelete={handleDelete}
               />
               <InputStyles
                 elementEdit={elementEdit}

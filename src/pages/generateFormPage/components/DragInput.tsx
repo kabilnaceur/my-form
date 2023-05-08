@@ -16,8 +16,7 @@ export interface dragInputProps {
   id: any;
   element: Element;
   index: number;
-  formElements: Element[];
-  setFormElements: Dispatch<SetStateAction<Element[]>>;
+  handleDelete: () => void;
   setElementEdit: Dispatch<SetStateAction<Element>>;
   moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
@@ -29,8 +28,7 @@ interface DragItem {
 }
 
 const DragInput: FC<dragInputProps> = ({
-  formElements,
-  setFormElements,
+  handleDelete,
   setElementEdit,
   element,
   index,
@@ -38,11 +36,6 @@ const DragInput: FC<dragInputProps> = ({
   moveCard,
 }) => {
   const theme = useSelector((state: RootState) => state.application.theme);
-  const handleDelete = (index: number): void => {
-    const newElements = [...formElements];
-    newElements.splice(index, 1);
-    setFormElements(newElements);
-  };
 
   const handleEdit = (element: Element): void => {
     setElementEdit(element);
@@ -136,7 +129,7 @@ const DragInput: FC<dragInputProps> = ({
         <button onClick={() => handleEdit(element)}>
           <FiEdit2 />
         </button>
-        <button onClick={() => handleDelete(index)}>
+        <button onClick={handleDelete}>
           <IoMdRemoveCircleOutline />
         </button>
       </div>

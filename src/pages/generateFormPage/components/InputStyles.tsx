@@ -109,9 +109,16 @@ const InputStyles: FC<inputStylesProps> = ({
       ...elementEdit,
       name: event.target.value,
     };
-    if (newElement.id === elementEdit.id) setElementEdit(newElement);
+    setElementEdit(newElement);
   };
-
+  const handleChangeCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.target;
+    const newElement = {
+      ...elementEdit,
+      isRequired: checked,
+    };
+    setElementEdit(newElement);
+  };
   return (
     <div className={styles[theme]}>
       <div className={styles.inputStylesCard}>
@@ -144,7 +151,11 @@ const InputStyles: FC<inputStylesProps> = ({
             </div>
             <div>
               <label className="container">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={handleChangeCheckbox}
+                  checked={elementEdit.isRequired}
+                />
                 <span className="checkmark"></span>
                 Is required
               </label>
