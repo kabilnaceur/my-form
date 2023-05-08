@@ -1,0 +1,130 @@
+@import "../../styles/abstracts/colors.scss";
+
+.light {
+  color: $dark-600;
+  background-color: $white;
+  .formCard {
+    background-color: #f7f9fc;
+  }
+  .downoloadButton {
+    color: $white;
+    background-color: #7214ff;
+  }
+  .prviewButton {
+    color: $dark-600;
+    background-color: #ebeef2;
+  }
+  .fileInputLabel {
+    color: $white;
+  }
+  .floatingButton {
+    color: $white;
+  }
+}
+
+.dark {
+  color: $white;
+  background-color: $dark-700;
+  .formCard {
+    background-color: #1a165a;
+  }
+  .fileInputLabel {
+    color: $dark-600;
+  }
+  .downoloadButton {
+    color: $dark-600;
+    background-color: #7214ff;
+  }
+  .prviewButton {
+    color: $white;
+    background-color: #221d6e;
+  }
+  .floatingButton {
+    color: $dark-600;
+  }
+}
+.floatingButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background-color: #7214ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.homeContainer {
+  padding: 100px 50px;
+  display: flex;
+  max-height: 100vh;
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+}
+.formContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.formCard {
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  .formButtonDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    button {
+      margin: 5px;
+      padding: 5px 20px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+  }
+  .formName {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    font-size: 18px;
+    .formImage {
+      width: 50px;
+      height: 50px;
+      font-size: 25px;
+      background-color: #ffeed6;
+      border-radius: 50%;
+      margin-right: 10px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.fileInputLabel {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 7px 20px;
+  margin: 5px;
+  border-radius: 50px;
+  background-color: $blue-700;
+  font-weight: 600;
+  cursor: pointer;
+}
+.fileInput {
+  display: none;
+}
+.pageTitle {
+  display: flex;
+  justify-content: space-between;
+}

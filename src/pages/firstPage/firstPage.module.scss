@@ -1,0 +1,262 @@
+@import "../../styles/abstracts/colors.scss";
+
+.light {
+  color: $dark-600;
+  background-color: $white;
+  .disktopInputDiv {
+    background-color: #f7f9fc;
+    .fileInputLabel {
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+      background-color: $white;
+    }
+  }
+  .disktopUrl {
+    background-color: #f7f9fc;
+  }
+  .imageContent {
+    button {
+      color: $white;
+    }
+    .disktopDiv {
+      background-color: $white;
+    }
+  }
+  .homeContainer {
+    div {
+      div {
+        color: $dark-600;
+      }
+    }
+  }
+}
+
+.dark {
+  color: $white;
+  background-color: $dark-700;
+  .disktopUrl {
+    background-color: #171352;
+  }
+  .disktopInputDiv {
+    background-color: #1a165a;
+    .fileInputLabel {
+      box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.3);
+      background-color: $dark-700;
+    }
+  }
+  .imageContent {
+    button {
+      color: $dark-700;
+    }
+    .disktopDiv {
+      background-color: $dark-700;
+    }
+  }
+  .homeContainer {
+    div {
+      div {
+        color: $white;
+      }
+    }
+  }
+}
+
+.homeContainer {
+  padding: 100px 0px;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  max-height: 100vh;
+  height: 100%;
+  flex-direction: column;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    div {
+      max-width: 950px;
+      font-size: 65px;
+      text-align: center;
+      font-weight: bold;
+      @media screen and (max-width: 840px) {
+        font-size: 50px;
+      }
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: $blue-700;
+      text-align: center;
+    }
+    h2 {
+      max-width: 800px;
+      font-size: 20px;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+}
+.imageContent {
+  position: relative;
+  margin-top: 20px;
+  button {
+    @media screen and (max-width: 840px) {
+      position: static;
+    }
+    position: absolute;
+    top: 3px;
+    font-size: 15px;
+    padding: 20px;
+    background-color: $blue-700;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+  }
+  img {
+    width: 900px;
+    @media screen and (max-width: 1000px) {
+      width: 800px;
+    }
+    @media screen and (max-width: 840px) {
+      display: none;
+    }
+  }
+  .disktopDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    bottom: -30%;
+    @media screen and (max-width: 1000px) {
+      bottom: -50%;
+    }
+    @media screen and (max-width: 840px) {
+      position: static;
+    }
+    max-width: 600px;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    padding: 20px;
+    .disktopHeader {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      flex-direction: row;
+      @media screen and (max-width: 840px) {
+        display: none;
+      }
+      .disktopUrlDiv {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .disktopUrl {
+          font-size: 11px;
+          color: $blue-700;
+          padding: 5px 25px;
+          border-radius: 50px;
+          width: max-content;
+        }
+      }
+      .disktopButton {
+        display: flex !important;
+        gap: 10px;
+        flex-direction: row;
+        .closeButton {
+          width: 10px;
+          height: 10px;
+          background-color: #fa84a6;
+          border-radius: 50%;
+        }
+        .hideButton {
+          width: 10px;
+          height: 10px;
+          background-color: #ffe56e;
+          border-radius: 50%;
+        }
+        .agrandirButton {
+          width: 10px;
+          height: 10px;
+          background-color: #52e282;
+          border-radius: 50%;
+        }
+      }
+    }
+    .disktopBody {
+      @media screen and (max-width: 840px) {
+        margin: 10px;
+        width: max-content;
+      }
+      justify-content: flex-start;
+      align-items: flex-start;
+      display: flex;
+      width: 100%;
+      max-width: 500px;
+      margin: 30px;
+      .disktopLogo {
+        @media screen and (max-width: 840px) {
+          display: none;
+        }
+        width: max-content;
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        img {
+          width: 25px;
+          margin-right: 5px;
+        }
+      }
+      .disktopForm {
+        @media screen and (max-width: 840px) {
+          display: none;
+        }
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        flex-direction: row;
+        font-size: 18px;
+        .disktopFormImage {
+          width: 50px;
+          height: 50px;
+          font-size: 25px;
+          background-color: #ffeed6;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+      .disktopInput {
+        padding-top: 20px;
+        font-size: 20px;
+        align-items: flex-start;
+        font-weight: 400;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        .disktopInputDiv {
+          margin-top: 20px;
+          flex-direction: row;
+          font-size: 20px;
+          font-weight: 400;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0px 20px;
+          border-radius: 50px;
+          .fileInputLabel {
+            font-size: 15px;
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+          }
+          .fileInput {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../styles/abstracts/colors.scss";
+
+.light {
+  color: $dark-600;
+  background-color: $white;
+}
+
+.dark {
+  color: $white;
+  background-color: $dark-700;
+}
+
+.InputStyles {
+  font-size: 18px;
+  display: flex;
+  width: 100%;
+  padding: 10px 0px;
+  input {
+    padding: 10px;
+  }
+}

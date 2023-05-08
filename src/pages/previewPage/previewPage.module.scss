@@ -1,0 +1,100 @@
+@import "../../styles/abstracts/colors.scss";
+
+.light {
+  color: $dark-600;
+  background-color: $white;
+  .codeDiv {
+    div {
+      background-color: #f7f9fc;
+    }
+  }
+  .form {
+    background-color: $white;
+  }
+}
+
+.dark {
+  color: $white;
+  background-color: $dark-700;
+  .form {
+    background-color: $dark-700;
+  }
+  .codeDiv {
+    div {
+      background-color: #1a165a;
+    }
+  }
+}
+.previewContainer {
+  @media screen and (max-width: 900px) {
+    padding: 50px 10px;
+  }
+  padding: 100px 50px;
+  display: flex;
+  max-height: 100vh;
+  height: 100%;
+  overflow: auto;
+  flex-direction: column;
+}
+.codeDiv {
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+  flex-wrap: wrap;
+  div {
+    width: 29%;
+    @media screen and (max-width: 1000px) {
+      width: 40%;
+    }
+    @media screen and (max-width: 900px) {
+      width: 100%;
+    }
+    margin: 10px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+.codeHeader {
+  height: max-content !important;
+  width: max-content !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.formContentDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+  img {
+    width: 1000px;
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+}
+.form {
+  max-width: 570px;
+  width: 100%;
+  position: absolute;
+  border-radius: 10px;
+  top: 20%;
+  left: calc(100vw / 2 - 350px);
+  @media screen and (max-width: 900px) {
+    position: static;
+  }
+  form {
+    padding: 10px;
+    h3 {
+      font-size: 33px;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+}
