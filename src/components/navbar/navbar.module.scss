@@ -9,9 +9,6 @@
   align-items: center;
   top: 0;
   width: 100%;
-  @media screen and (max-width: 700px) {
-    flex-direction: column;
-  }
 }
 
 .light {
@@ -26,6 +23,11 @@
   }
   .themeButton {
     color: $dark-600;
+  }
+  .logoButton {
+    h4 {
+      color: $dark-600;
+    }
   }
 }
 
@@ -42,6 +44,11 @@
   .themeButton {
     color: $white;
   }
+  .logoButton {
+    h4 {
+      color: $white;
+    }
+  }
 }
 
 .buttonMenu {
@@ -56,9 +63,6 @@
 }
 .divLogo {
   padding: 0px 20px;
-  @media screen and (max-width: 700px) {
-    width: 100%;
-  }
 }
 .logo {
   width: 25px;

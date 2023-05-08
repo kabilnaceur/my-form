@@ -5,9 +5,11 @@ import storage from "redux-persist/lib/storage";
 import applicationReducer, {
   ApplicationState,
 } from "../features/application/applicationSlice";
+import formsReducer, { FormsState } from "../features/form/formSlice";
 
 export interface RootState {
   application: ApplicationState;
+  forms: FormsState;
 }
 
 const persistConfig = {
@@ -15,14 +17,19 @@ const persistConfig = {
   storage,
 };
 
-const persistedUserReducer = persistReducer<ApplicationState>(
+const persistedApplicationReducer = persistReducer<ApplicationState>(
   persistConfig,
   applicationReducer
+);
+const persistedFormReducer = persistReducer<FormsState>(
+  persistConfig,
+  formsReducer
 );
 
 const store: Store<RootState> = configureStore({
   reducer: {
-    application: persistedUserReducer,
+    application: persistedApplicationReducer,
+    forms: persistedFormReducer,
   },
 });
 

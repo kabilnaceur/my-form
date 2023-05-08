@@ -1,0 +1,242 @@
+@import "../../styles/abstracts/colors.scss";
+
+.light {
+  color: $dark-600;
+  background-color: $white;
+  .elementCard {
+    background-color: #f7f9fc;
+    button {
+      color: $dark-600;
+    }
+  }
+  .inputDetails {
+    label {
+      color: $dark-600;
+    }
+    input {
+      color: $dark-600;
+      border: 2px solid $white;
+      &::placeholder {
+        color: $dark-600;
+      }
+      &:focus {
+        border-color: $blue-700;
+      }
+    }
+  }
+  .fileInputLabel {
+    color: $white;
+  }
+  .formInputsCard,
+  .inputStylesCard {
+    background-color: #f7f9fc;
+  }
+  .inputCard {
+    border: 2px solid $white;
+    color: $dark-600;
+  }
+  .formDetailsCard {
+    background-color: #f7f9fc;
+    input,
+    textarea {
+      color: $dark-600;
+      &::placeholder {
+        color: $dark-600;
+      }
+    }
+  }
+}
+
+.dark {
+  color: $white;
+  background-color: $dark-700;
+  .elementCard {
+    background-color: #1a165a;
+    button {
+      color: $white;
+    }
+  }
+  .inputDetails {
+    label {
+      color: $white;
+    }
+    input {
+      color: $white;
+      border: 2px solid $dark-600;
+      &::placeholder {
+        color: $white;
+      }
+      &:focus {
+        border-color: $blue-700;
+      }
+    }
+  }
+  .fileInputLabel {
+    color: $dark-600;
+  }
+  .inputCard {
+    border: 2px solid $dark-600;
+    color: $white;
+  }
+  .formInputsCard,
+  .inputStylesCard {
+    background-color: #1a165a;
+  }
+  .formDetailsCard {
+    background-color: #1a165a;
+    input,
+    textarea {
+      color: $white;
+      &::placeholder {
+        color: $white;
+      }
+    }
+  }
+}
+.homeContainer {
+  padding: 100px 50px;
+  display: flex;
+  max-height: 100vh;
+  height: 100%;
+  flex-direction: column;
+  overflow: auto;
+}
+.fileInputLabel {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 7px 20px;
+  margin: 5px;
+  border-radius: 50px;
+  background-color: $blue-700;
+  font-weight: 600;
+  cursor: pointer;
+}
+.fileInput {
+  display: none;
+}
+.pageTitle {
+  display: flex;
+  justify-content: space-between;
+}
+.formDetailsCard {
+  height: auto;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  input,
+  textarea {
+    border: none;
+    background-color: transparent;
+    margin: 10px;
+    &:focus {
+      border: none !important;
+      outline: none;
+    }
+  }
+  .descriptionInput {
+    resize: none;
+    height: auto;
+    min-height: 100px;
+  }
+  .nameInput {
+    font-size: 30px;
+  }
+  .descriptionInput {
+    font-size: 20px;
+  }
+}
+.showGnerateForm {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  margin-top: 20px;
+}
+.formInputsCard,
+.inputStylesCard,
+.formDesplayCard {
+  border-radius: 10px;
+  height: 600px;
+  padding: 10px;
+  overflow: auto;
+}
+.formInputsCard {
+  display: flex;
+  flex-direction: column;
+  .inputCard {
+    display: flex;
+    justify-content: flex-start;
+    background-color: transparent;
+    margin: 10px 0px;
+    font-size: 20px;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    svg {
+      margin-right: 10px;
+    }
+  }
+}
+.inputDetailsDiv {
+  padding: 10px;
+  .inputDetails {
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: 18px;
+      margin: 10px 0px;
+    }
+    input {
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px 0px;
+      background-color: transparent;
+    }
+  }
+}
+.inputStylesDiv {
+  padding: 10px;
+}
+.backgroudColorDiv {
+  font-weight: 600;
+  display: flex;
+  margin: 10px 0px;
+  div {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+.formDesplayCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  h3 {
+    font-size: 33px;
+  }
+  p {
+    text-align: center;
+  }
+}
+.elementCard {
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  margin: 10px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  grid-template-columns: 1fr 7fr 1fr 1fr;
+  button {
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+  }
+}

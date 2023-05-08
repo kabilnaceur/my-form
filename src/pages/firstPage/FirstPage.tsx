@@ -1,14 +1,21 @@
 import "../../styles/main.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/app/store";
 import styles from "./firstPage.module.scss";
 import homeImage from "../../assets/images/homeImage.webp";
 import logo from "../../assets/images/logo.png";
 import { ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { addForm } from "../../redux/features/form/formSlice";
+import { Form } from "../../utils/types";
 
 function FirstPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const theme = useSelector((state: RootState) => state.application.theme);
+  const forms = useSelector((state: RootState) => state.forms.forms);
 
+  const setForms = (newForm: Form) => dispatch(addForm(newForm));
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file && file.type === "application/json") {
@@ -16,7 +23,10 @@ function FirstPage() {
       reader.onload = () => {
         try {
           const data = JSON.parse(reader.result as string);
-          console.log(data); // Log the file contents to the console
+          setForms({ ...data, id: forms.length + data.name });
+          navigate("/preview", {
+            state: { ...data, id: forms.length + data.name },
+          });
         } catch (error) {
           console.error("Error parsing JSON file", error);
         }
@@ -43,7 +53,9 @@ function FirstPage() {
             <div>
               <div className={styles.imageContent}>
                 <img alt="home_image" src={homeImage} />
-                <button>Get Stared</button>
+                <button onClick={() => navigate("/generate-form")}>
+                  Get Stared
+                </button>
                 <div className={styles.disktopDiv}>
                   <div className={styles.disktopHeader}>
                     <div className={styles.disktopButton}>

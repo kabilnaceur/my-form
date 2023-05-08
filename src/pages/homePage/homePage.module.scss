@@ -17,6 +17,9 @@
   .fileInputLabel {
     color: $white;
   }
+  .floatingButton {
+    color: $white;
+  }
 }
 
 .dark {
@@ -36,12 +39,32 @@
     color: $white;
     background-color: #221d6e;
   }
+  .floatingButton {
+    color: $dark-600;
+  }
 }
+.floatingButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background-color: #7214ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
 .homeContainer {
   padding: 100px 50px;
   display: flex;
-  height: 100vh;
+  max-height: 100vh;
+  height: 100%;
   flex-direction: column;
+  overflow: auto;
 }
 .formContainer {
   display: flex;
