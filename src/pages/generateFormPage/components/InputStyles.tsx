@@ -107,6 +107,7 @@ const InputStyles: FC<inputStylesProps> = ({
   return (
     <div className={styles[theme]}>
       <div className={styles.inputStylesCard}>
+        <h4>Element styles</h4>
         <div className="tab-container">
           <div
             className={`tab${activeTab === TabName.Details ? " active" : ""}`}

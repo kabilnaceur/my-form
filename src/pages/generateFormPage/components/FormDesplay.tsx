@@ -26,6 +26,7 @@ const FormDesplay: FC<formDesplayProps> = ({
   return (
     <div className={styles[theme]}>
       <div className={styles.formDesplayCard}>
+        <h4 style={{ textAlign: "start" }}>Form desplay</h4>
         <h3>{formName}</h3>
         <p>{formDescription}</p>
         {formElements.map((element, index) => (

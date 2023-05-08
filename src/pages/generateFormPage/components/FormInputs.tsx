@@ -82,6 +82,7 @@ const FormInputs: FC<formInputsProps> = ({
   return (
     <div className={styles[theme]}>
       <div className={styles.formInputsCard}>
+        <h4>Form elements</h4>
         {inputs.map((input: Input) => (
           <button
             className={styles.inputCard}

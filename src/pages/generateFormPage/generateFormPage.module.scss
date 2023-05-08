@@ -1,6 +1,9 @@
 @import "../../styles/abstracts/colors.scss";
 
 .light {
+  .saveButton {
+    color: $white;
+  }
   color: $dark-600;
   background-color: $white;
   .elementCard {
@@ -48,6 +51,9 @@
 }
 
 .dark {
+  .saveButton {
+    color: $dark-600;
+  }
   color: $white;
   background-color: $dark-700;
   .elementCard {
@@ -118,6 +124,7 @@
 }
 .pageTitle {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .formDetailsCard {
@@ -152,6 +159,9 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
   margin-top: 20px;
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
 }
 .formInputsCard,
 .inputStylesCard,
@@ -239,4 +249,15 @@
     font-size: 20px;
     background-color: transparent;
   }
+}
+.saveButton {
+  border: none;
+  background-color: $blue-700;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 10px 20px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
