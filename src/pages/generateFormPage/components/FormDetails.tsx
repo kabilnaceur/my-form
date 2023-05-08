@@ -32,6 +32,7 @@ const FormDetails: FC<formDetailsProps> = ({
   return (
     <div className={styles[theme]}>
       <div className={styles.formDetailsCard}>
+        <h4>Edit form details</h4>
         <input
           placeholder="Form name"
           className={styles.nameInput}

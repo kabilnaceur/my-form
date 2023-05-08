@@ -8,6 +8,7 @@ import { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { addForm } from "../../redux/features/form/formSlice";
 import { Form } from "../../utils/types";
+import { useEffect } from "react";
 
 function FirstPage() {
   const navigate = useNavigate();
@@ -36,6 +37,11 @@ function FirstPage() {
       console.error("Invalid file type, please select a JSON file");
     }
   };
+
+  useEffect(() => {
+    if (forms.length > 0) navigate("/home");
+  }, []);
+  
   return (
     <div className={theme}>
       <div className="background ">

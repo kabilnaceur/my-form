@@ -87,7 +87,7 @@ function checkFormValidation() {
               <SyntaxHighlighter
                 language="html"
                 style={theme === "dark" ? atomDark : prism}
-                customStyle={{ background: "none", height: "250px" }}
+                customStyle={{ background: "none", height: "220px" }}
               >
                 {codeString}
               </SyntaxHighlighter>
@@ -97,7 +97,7 @@ function checkFormValidation() {
               <SyntaxHighlighter
                 language="css"
                 style={theme === "dark" ? atomDark : prism}
-                customStyle={{ background: "none", height: "250px" }}
+                customStyle={{ background: "none", height: "220px" }}
               >
                 {cssCode}
               </SyntaxHighlighter>
@@ -107,7 +107,7 @@ function checkFormValidation() {
               <SyntaxHighlighter
                 language="javascript"
                 style={theme === "dark" ? atomDark : prism}
-                customStyle={{ background: "none", height: "250px" }}
+                customStyle={{ background: "none", height: "220px" }}
               >
                 {jsCode}
               </SyntaxHighlighter>
