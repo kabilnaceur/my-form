@@ -50,6 +50,7 @@ const FormDesplay: FC<formDesplayProps> = ({
         setFormElements={setFormElements}
         id={element.id}
         setElementEdit={setElementEdit}
+        key={element.id}
       />
     );
   }, []);

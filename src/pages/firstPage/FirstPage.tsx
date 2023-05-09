@@ -41,7 +41,7 @@ function FirstPage() {
   useEffect(() => {
     if (forms.length > 0) navigate("/home");
   }, []);
-  
+
   return (
     <div className={theme}>
       <div className="background ">
@@ -52,9 +52,11 @@ function FirstPage() {
               Get your Json form file and copy the code for your website
             </div>
             <h2>
-              Code your own HTML form and style it, then point your form to
-              formcarry to get email notifications, upload files, block spam and
-              integrate with other apps.
+              Build custom forms with ease using our web application. Simply
+              design and style your form, and we'll provide you with the
+              necessary HTML, CSS, and JavaScript code. And, if you ever need to
+              modify your form, just export the JSON file and import it back
+              into our app!
             </h2>
             <div>
               <div className={styles.imageContent}>

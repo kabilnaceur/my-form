@@ -9,7 +9,9 @@ export interface inputProps {
 const Input: FC<inputProps> = ({ element }) => {
   return (
     <label
-      className={styles.InputStyles}
+      className={`${styles.InputStyles}  ${
+        element.type === "button" ? "flex" : ""
+      }`}
       style={{
         flexDirection:
           element.type === "checkbox" || element.type === "radio"

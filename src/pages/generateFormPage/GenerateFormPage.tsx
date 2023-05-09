@@ -17,19 +17,7 @@ function GenerateFormPage() {
   const theme = useSelector((state: RootState) => state.application.theme);
   const forms = useSelector((state: RootState) => state.forms.forms);
   const [formName, setFormName] = useState<string>("Form Name");
-  const [elementEdit, setElementEdit] = useState<Element>({
-    id: "",
-    name: "",
-    type: "",
-    isRequired: false,
-    style: {
-      borderRadius: "0",
-      borderColor: "#000000",
-      fontSize: "10",
-      color: "#000000",
-      backgroud: "#ffffff",
-    },
-  });
+  const [elementEdit, setElementEdit] = useState<Element | null>(null);
 
   const [formElements, setFormElements] = useState<Element[]>([]);
   const [formDescription, setFormDescription] =
@@ -56,6 +44,10 @@ function GenerateFormPage() {
     }
     setFormElements(newElements);
   }, [elementEdit]);
+
+  useEffect(() => {
+    if (formElements.length === 0) setElementEdit(null);
+  }, [formElements]);
 
   return (
     <div className={theme}>
@@ -89,8 +81,6 @@ function GenerateFormPage() {
               />
               <InputStyles
                 elementEdit={elementEdit}
-                formElements={formElements}
-                setFormElements={setFormElements}
                 setElementEdit={setElementEdit}
               />
             </div>

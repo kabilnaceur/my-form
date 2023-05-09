@@ -35,6 +35,19 @@ function PreviewPage() {
         background-color:${element.style.backgroud};
           border-radius:${element.style.borderRadius + "px"} ;
       }
+      #${element.id}-label {
+  font-size: 18px;
+  display: flex;
+  width: 100%;
+  padding: 10px 0px;
+        ${
+          element.type === "button"
+            ? `display: flex;
+ justify-content: center;
+ align-items: center;`
+            : ""
+        }
+      }
     `;
   });
   const cssCode = `
@@ -59,12 +72,26 @@ function checkFormValidation() {
 `;
   const inputForms = locationState.elements.map((element) => {
     return `
+        <label
+        id="${element.id}-label"
+      style={
+        flex-direction:
+         ${
+           element.type === "checkbox" || element.type === "radio"
+             ? "row"
+             : "column"
+         };
+      }
+    >
+      ${element.type === "button" ? "" : element.name}
     <input
         id="${element.id}"
         name="${element.name.replace(" ", "")}"
         placeholder="${element.name}"
         type="${element.type}"
-       />`;
+       />
+       </label>
+       `;
   });
 
   const codeString = `
