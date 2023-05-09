@@ -47,7 +47,6 @@ function GenerateFormPage() {
     navigate("/home");
   };
   useEffect(() => {
-    console.log(elementEdit);
     const newElements = [...formElements];
     const index = newElements.findIndex(
       (element: Element) => element.id === elementEdit.id
@@ -56,20 +55,7 @@ function GenerateFormPage() {
       newElements[index] = elementEdit; // Replace it with elementEdit
     }
     setFormElements(newElements);
-    console.log(formElements);
   }, [elementEdit]);
-
-  const handleDelete = (element: Element): void => {
-    console.log(element, formElements);
-    const newElements = [...formElements];
-    const index = newElements.findIndex(
-      (ele: Element) => ele.id === element.id
-    );
-    if (index !== -1) {
-      newElements.splice(index, 1);
-      setFormElements(newElements);
-    }
-  };
 
   return (
     <div className={theme}>
@@ -100,7 +86,6 @@ function GenerateFormPage() {
                 formElements={formElements}
                 setFormElements={setFormElements}
                 setElementEdit={setElementEdit}
-                handleDelete={handleDelete}
               />
               <InputStyles
                 elementEdit={elementEdit}

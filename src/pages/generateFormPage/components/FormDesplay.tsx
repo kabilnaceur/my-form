@@ -11,7 +11,6 @@ export interface formDesplayProps {
   formName: string;
   formDescription: string;
   formElements: Element[];
-  handleDelete: (element: Element) => void;
   setFormElements: Dispatch<SetStateAction<Element[]>>;
   setElementEdit: Dispatch<SetStateAction<Element>>;
 }
@@ -29,7 +28,6 @@ const FormDesplay: FC<formDesplayProps> = ({
   formElements,
   setFormElements,
   setElementEdit,
-  handleDelete,
 }) => {
   const theme = useSelector((state: RootState) => state.application.theme);
 
@@ -49,9 +47,9 @@ const FormDesplay: FC<formDesplayProps> = ({
         element={element}
         index={index}
         moveCard={moveCard}
+        setFormElements={setFormElements}
         id={element.id}
         setElementEdit={setElementEdit}
-        handleDelete={() => handleDelete(element)}
       />
     );
   }, []);
