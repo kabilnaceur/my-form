@@ -7,7 +7,7 @@ import { SetStateAction } from "react";
 import DragInput from "./DragInput";
 import update from "immutability-helper";
 
-export interface formDesplayProps {
+export interface formDisplayProps {
   formName: string;
   formDescription: string;
   formElements: Element[];
@@ -22,7 +22,7 @@ export interface Item {
 export interface ContainerState {
   elements: Element[];
 }
-const FormDesplay: FC<formDesplayProps> = ({
+const FormDisplay: FC<formDisplayProps> = ({
   formName,
   formDescription,
   formElements,
@@ -57,7 +57,7 @@ const FormDesplay: FC<formDesplayProps> = ({
   return (
     <div className={styles[theme]}>
       <div className={styles.formDesplayCard}>
-        <h4 style={{ textAlign: "start" }}>Form desplay</h4>
+        <h4 style={{ textAlign: "start" }}>Form display</h4>
         <h3>{formName}</h3>
         <p>{formDescription}</p>
         <div>{formElements.map((card, i) => renderCard(card, i))}</div>
@@ -66,4 +66,4 @@ const FormDesplay: FC<formDesplayProps> = ({
   );
 };
 
-export default FormDesplay;
+export default FormDisplay;

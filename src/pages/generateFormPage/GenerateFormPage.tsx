@@ -5,7 +5,7 @@ import styles from "./generateFormPage.module.scss";
 import FormDetails from "./components/FormDetails";
 import FormInputs from "./components/FormInputs";
 import InputStyles from "./components/InputStyles";
-import FormDesplay from "./components/FormDesplay";
+import FormDisplay from "./components/FormDisplay";
 import { useEffect, useState } from "react";
 import { Element, Form } from "../../utils/types";
 import { addForm } from "../../redux/features/form/formSlice";
@@ -72,7 +72,7 @@ function GenerateFormPage() {
                 formElements={formElements}
                 setElementEdit={setElementEdit}
               />
-              <FormDesplay
+              <FormDisplay
                 formDescription={formDescription}
                 formName={formName}
                 formElements={formElements}
