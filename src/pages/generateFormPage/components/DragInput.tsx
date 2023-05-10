@@ -16,8 +16,8 @@ export interface dragInputProps {
   id: any;
   element: Element;
   index: number;
-  handleDelete: () => void;
   setElementEdit: Dispatch<SetStateAction<Element>>;
+  setFormElements: Dispatch<SetStateAction<Element[]>>;
   moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
@@ -28,17 +28,29 @@ interface DragItem {
 }
 
 const DragInput: FC<dragInputProps> = ({
-  handleDelete,
   setElementEdit,
   element,
   index,
   id,
   moveCard,
+  setFormElements,
 }) => {
   const theme = useSelector((state: RootState) => state.application.theme);
 
   const handleEdit = (element: Element): void => {
     setElementEdit(element);
+  };
+
+  const handleDelete = (): void => {
+    setFormElements((old: Element[]) => {
+      const index = old.findIndex((ele: Element) => ele.id === element.id);
+
+      if (index !== -1) {
+        const newElements = [...old];
+        newElements.splice(index, 1);
+        return newElements; // Return the updated array
+      } else return old; // Return the updated array
+    });
   };
   const ref = useRef<HTMLDivElement>(null);
   const [{ handlerId }, drop] = useDrop<
@@ -125,7 +137,30 @@ const DragInput: FC<dragInputProps> = ({
         <button>
           <AiOutlineDrag />
         </button>
-        <Input element={element} />
+        {element.type === "select" ? (
+          <select
+            style={{
+              backgroundColor: element.style.backgroud,
+              color: element.style.color,
+              border: `2px solid ${element.style.borderColor}`,
+              fontSize: +element.style.fontSize,
+              borderRadius: +element.style.borderRadius,
+              padding: 10,
+            }}
+            id={element.id}
+          >
+            <option key={index} value={element.name}>
+              {element.name}
+            </option>
+            {element.options?.map((opt, index) => (
+              <option key={index} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <Input element={element} />
+        )}
         <button onClick={() => handleEdit(element)}>
           <FiEdit2 />
         </button>

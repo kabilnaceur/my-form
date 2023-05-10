@@ -15,6 +15,10 @@ function PreviewPage() {
   const locationState = location.state as Form;
 
   const theme = useSelector((state: RootState) => state.application.theme);
+  const optionsSelect = (element: any) =>
+    element.options?.map((option: string) => {
+      return `<option value="${option}">${option}</option>`;
+    });
   const inputJs = locationState.elements.map((element) => {
     return `
         var ${element.name.replace(" ", "")} = document..getElementById('${
@@ -34,6 +38,20 @@ function PreviewPage() {
         color : ${element.style.color};
         background-color:${element.style.backgroud};
           border-radius:${element.style.borderRadius + "px"} ;
+          ${element.type === "select" ? "padding:10px;" : ""}
+      }
+      #${element.id}-label {
+  font-size: 18px;
+  display: flex;
+  width: 100%;
+  padding: 10px 0px;
+        ${
+          element.type === "button"
+            ? `display: flex;
+ justify-content: center;
+ align-items: center;`
+            : ""
+        }
       }
     `;
   });
@@ -59,12 +77,34 @@ function checkFormValidation() {
 `;
   const inputForms = locationState.elements.map((element) => {
     return `
+    ${
+      element.type === "select"
+        ? `<select id="${element.id}">
+  <option value="${element.name}">${element.name}</option>
+  ${optionsSelect(element).join("")}
+</select>
+`
+        : `  <label
+        id="${element.id}-label"
+      style={
+        flex-direction:
+         ${
+           element.type === "checkbox" || element.type === "radio"
+             ? "row"
+             : "column"
+         };
+      }
+    >
+      ${element.type === "button" ? "" : element.name}
     <input
         id="${element.id}"
         name="${element.name.replace(" ", "")}"
         placeholder="${element.name}"
         type="${element.type}"
-       />`;
+       />
+       </label>`
+    }
+       `;
   });
 
   const codeString = `

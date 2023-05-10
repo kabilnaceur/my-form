@@ -8,6 +8,7 @@ export type Element = {
   name: string;
   type: string;
   isRequired: boolean;
+  options?: string[] | null;
   style: {
     borderRadius: string;
     borderColor: string;

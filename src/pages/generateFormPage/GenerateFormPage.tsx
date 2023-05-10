@@ -5,7 +5,7 @@ import styles from "./generateFormPage.module.scss";
 import FormDetails from "./components/FormDetails";
 import FormInputs from "./components/FormInputs";
 import InputStyles from "./components/InputStyles";
-import FormDesplay from "./components/FormDesplay";
+import FormDisplay from "./components/FormDisplay";
 import { useEffect, useState } from "react";
 import { Element, Form } from "../../utils/types";
 import { addForm } from "../../redux/features/form/formSlice";
@@ -17,19 +17,7 @@ function GenerateFormPage() {
   const theme = useSelector((state: RootState) => state.application.theme);
   const forms = useSelector((state: RootState) => state.forms.forms);
   const [formName, setFormName] = useState<string>("Form Name");
-  const [elementEdit, setElementEdit] = useState<Element>({
-    id: "",
-    name: "",
-    type: "",
-    isRequired: false,
-    style: {
-      borderRadius: "0",
-      borderColor: "#000000",
-      fontSize: "10",
-      color: "#000000",
-      backgroud: "#ffffff",
-    },
-  });
+  const [elementEdit, setElementEdit] = useState<Element | null>(null);
 
   const [formElements, setFormElements] = useState<Element[]>([]);
   const [formDescription, setFormDescription] =
@@ -47,7 +35,6 @@ function GenerateFormPage() {
     navigate("/home");
   };
   useEffect(() => {
-    console.log(elementEdit);
     const newElements = [...formElements];
     const index = newElements.findIndex(
       (element: Element) => element.id === elementEdit.id
@@ -56,20 +43,11 @@ function GenerateFormPage() {
       newElements[index] = elementEdit; // Replace it with elementEdit
     }
     setFormElements(newElements);
-    console.log(formElements);
   }, [elementEdit]);
 
-  const handleDelete = (element: Element): void => {
-    console.log(element, formElements);
-    const newElements = [...formElements];
-    const index = newElements.findIndex(
-      (ele: Element) => ele.id === element.id
-    );
-    if (index !== -1) {
-      newElements.splice(index, 1);
-      setFormElements(newElements);
-    }
-  };
+  useEffect(() => {
+    if (formElements.length === 0) setElementEdit(null);
+  }, [formElements]);
 
   return (
     <div className={theme}>
@@ -94,18 +72,15 @@ function GenerateFormPage() {
                 formElements={formElements}
                 setElementEdit={setElementEdit}
               />
-              <FormDesplay
+              <FormDisplay
                 formDescription={formDescription}
                 formName={formName}
                 formElements={formElements}
                 setFormElements={setFormElements}
                 setElementEdit={setElementEdit}
-                handleDelete={handleDelete}
               />
               <InputStyles
                 elementEdit={elementEdit}
-                formElements={formElements}
-                setFormElements={setFormElements}
                 setElementEdit={setElementEdit}
               />
             </div>
