@@ -6,6 +6,8 @@ import { SketchPicker } from "react-color";
 import { SetStateAction } from "react";
 import { FC } from "react";
 import { Element } from "../../../utils/types";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { IoMdRemoveCircleOutline } from "react-icons/io";
 
 enum TabName {
   Details = "Details",
@@ -44,25 +46,60 @@ const InputStyles: FC<inputStylesProps> = ({ elementEdit, setElementEdit }) => {
     }
   }, [elementEdit]);
 
-  const handleMouseOverColor = () => {
+  const handleMouseOverColor = (): void => {
     setIsHoveringColor(true);
   };
-
-  const handleMouseOutColor = () => {
+  const handleAddOption = (): void => {
+    if (elementEdit.options) {
+      const newElement = {
+        ...elementEdit,
+        options: [...elementEdit.options, "option"],
+      };
+      setElementEdit(newElement);
+    } else {
+      const newElement = {
+        ...elementEdit,
+        options: ["option"],
+      };
+      setElementEdit(newElement);
+    }
+  };
+  const handleEditOption = (
+    index: number,
+    event: ChangeEvent<HTMLInputElement>
+  ): void => {
+    let newElement = {
+      ...elementEdit,
+    };
+    const newOptions = [...newElement.options];
+    newOptions[index] = event.target.value;
+    newElement = { ...newElement, options: newOptions };
+    setElementEdit(newElement);
+  };
+  const handleDeleteOption = (index: number): void => {
+    let newElement = {
+      ...elementEdit,
+    };
+    const newOptions = [...newElement.options];
+    newOptions.splice(index, 1);
+    newElement = { ...newElement, options: newOptions };
+    setElementEdit(newElement);
+  };
+  const handleMouseOutColor = (): void => {
     setIsHoveringColor(false);
   };
-  const handleMouseOverBorder = () => {
+  const handleMouseOverBorder = (): void => {
     setIsHoveringBorder(true);
   };
 
-  const handleMouseOutBorder = () => {
+  const handleMouseOutBorder = (): void => {
     setIsHoveringBorder(false);
   };
-  const handleMouseOverBackground = () => {
+  const handleMouseOverBackground = (): void => {
     setIsHoveringBackground(true);
   };
 
-  const handleMouseOutBackground = () => {
+  const handleMouseOutBackground = (): void => {
     setIsHoveringBackground(false);
   };
 
@@ -146,17 +183,43 @@ const InputStyles: FC<inputStylesProps> = ({ elementEdit, setElementEdit }) => {
                     value={elementEdit?.name}
                   />
                 </div>
-                <div>
-                  <label className="container">
-                    <input
-                      type="checkbox"
-                      onChange={handleChangeCheckbox}
-                      checked={elementEdit?.isRequired}
-                    />
-                    <span className="checkmark"></span>
-                    Is required
-                  </label>
-                </div>
+                {elementEdit.type !== "button" && (
+                  <div>
+                    <label className="container">
+                      <input
+                        type="checkbox"
+                        onChange={handleChangeCheckbox}
+                        checked={elementEdit?.isRequired}
+                      />
+                      <span className="checkmark"></span>
+                      Is required
+                    </label>
+                  </div>
+                )}
+                {elementEdit.type === "select" && (
+                  <>
+                    <div className={styles.inputOptions}>
+                      {" "}
+                      <label>Element options</label>
+                      <button onClick={handleAddOption}>
+                        <AiOutlinePlusCircle />
+                      </button>
+                    </div>
+                    <div>
+                      {elementEdit?.options?.map((option: string, index) => (
+                        <div key={index} className={styles.optionsDiv}>
+                          <input
+                            value={option}
+                            onChange={(e) => handleEditOption(index, e)}
+                          />
+                          <button onClick={() => handleDeleteOption(index)}>
+                            <IoMdRemoveCircleOutline />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </>
             ) : (
               <div className="flex">

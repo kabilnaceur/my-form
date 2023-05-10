@@ -87,7 +87,7 @@ function FirstPage() {
                     <div className={styles.disktopInput}>
                       Your form json file
                       <div className={styles.disktopInputDiv}>
-                        formFile.json
+                        <p>formFile.json</p>
                         <label
                           htmlFor="json-file-input"
                           className={styles.fileInputLabel}

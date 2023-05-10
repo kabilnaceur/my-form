@@ -137,7 +137,30 @@ const DragInput: FC<dragInputProps> = ({
         <button>
           <AiOutlineDrag />
         </button>
-        <Input element={element} />
+        {element.type === "select" ? (
+          <select
+            style={{
+              backgroundColor: element.style.backgroud,
+              color: element.style.color,
+              border: `2px solid ${element.style.borderColor}`,
+              fontSize: +element.style.fontSize,
+              borderRadius: +element.style.borderRadius,
+              padding: 10,
+            }}
+            id={element.id}
+          >
+            <option key={index} value={element.name}>
+              {element.name}
+            </option>
+            {element.options?.map((opt, index) => (
+              <option key={index} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <Input element={element} />
+        )}
         <button onClick={() => handleEdit(element)}>
           <FiEdit2 />
         </button>
